@@ -3,12 +3,12 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # Import Dependencies
 # Dot Sourcing: Imports contents of a script into the current script to bring functions in.
-. D:\scripts\getUserInput.ps1
-. D:\scripts\getValidURL.ps1
-. D:\scripts\runInstall.ps1
-. D:\scripts\enableBitLocker.ps1
-. D:\scripts\showBitLockerKey.ps1
-. D:\scripts\showCustomDialog.ps1
+. scripts\getUserInput.ps1
+. scripts\getValidURL.ps1
+. scripts\runInstall.ps1
+. scripts\enableBitLocker.ps1
+. scripts\showBitLockerKey.ps1
+. scripts\showCustomDialog.ps1
 
 # Ask the user for the following.
 # 1] Rename the Computer
@@ -60,6 +60,7 @@ net user jstadmin $password
 Show-CustomDialog -Title "JSTAdmin PW" -Dialog "Please copy the following password into configurations." -TextToCopy "JSTAdmin PW: $password" -CheckboxText "I have copied this into ConnectWise."
 
 # 8] Runs Windows Updates and Driver Updates
-D:\scripts\TriggerWindowsUpdate.ps1
+.\scripts\TriggerWindowsUpdate.ps1
 
 # 9] Reboot Machine
+shutdown.exe /r /t 120 /c "The system will restart in 2 minutes. Please save your work." /f
