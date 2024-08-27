@@ -1,0 +1,120 @@
+WEB BROWSERS
+1	Chrome:							chrome                                  Browser by Google
+2	Opera:							operaChromium                           Alternative Browser
+3	Firefox:						firefox                                 Extensible Browser
+    Edge:                           edge                                    Microsoft Edge Browser
+
+FILE SHARING
+4	qBittorrent:					qbittorrent                             Free Bittorrent Client
+
+COMPRESSION
+5	7-Zip:							7zip                                    Great Compression App
+6	PeaZip:							peazip                                  File Compression Tool
+7	WinRar:							winrar                                  Another Compression Tool (Trial)
+
+MESSAGING:
+    Zoom:                           zoom                                    Video Conference
+8	Discord:						discord                                 Voice and Text Chat
+9	Skype:							skype                                   Internet Telephone
+10	Pidgin:							pidgin                                  Multi-IM Client
+11	Thunderbird:					thunderbird                             Email Reader by Mozilla
+12	Trillian:						trillian                                Trillian IM
+
+ONLINE STORAGE:
+13	Dropbox:						dropbox                                 Online Backup/File Sync
+14	Google Backup & Sync:			googlebackupandsync                     Online Backup/File Sync
+15	OneDrive:						onedrive                                Online File Sync by Microsoft
+16	SugarSync:						sugarsync                               Online Backup/File Sync
+
+MEDIA:
+17	iTunes:							itunes                                  Music/Media Manager
+18	VLC:							vlc                                     Great Video Player
+19	AIMP:							aimp                                    Music Player
+20	foobar2000:						foobar                                  Music Player
+21	Winamp:							winamp                                  Music Player
+22	MusicBee:						musicbee                                Music Manager & Player
+23	Audacity:						audacity                                Audio Editor
+24	K-Lite Codecs:					klitecodecs                             Video decoders plus Media Player Classic
+25	GOM:							gom                                     Video Player
+26	Spotify:						spotify                                 Online Music Service
+27	CCCP:							cccp                                    Video decoders plus MPC
+28	MediaMonkey:					mediamonkey                             Music Organizer
+29	HandBrake:						handbrake                               Convert Videos (requires .NET 4.7.1)
+
+RUNTIMES:
+ 	Java (AdoptOpenJDK) x64 8:		adoptjavax8                             64-bit Java Runtime (JRE) 
+31  Java (AdoptOpenJDK) 8:			adoptjava8                              32-bit Java Runtime (JRE) 
+   Java (AdoptOpenJDK) x64 11:		adoptjavax11                            64-bit Java Runtime (JRE)
+33	.NET 4.8:						.net4.8                                 Microsoft .NET 4.8
+34	Silverlight:					silverlight                             Microsoft Silverlight
+35	Adobe Air (no support):			air                                     Adobe Integrated Runtime (End of Life)
+
+OTHER:
+36	Evernote:						evernote                                Online Notes
+37	Google Earth:					googleearth                             Online Atlas by Google
+38	Steam:							steam                                   App Store for Games
+39	KeePass 2:						keepass2                                Password Manager
+40	Everything:						everything                              Local File Search Engine
+41	NV Access:						nvda                                    Screen Reader
+
+IMAGING:
+42	Krita:							krita                                   Painting Program
+43	Blender:						blender                                 3D Creation Suite
+44	Paint.NET:						paint.net                               Image Editor (requires .NET 4.5)
+45	GIMP:							gimp                                    Open Source Image Editor
+46	IrfanView:						irfanview                               Image Viewer
+47	XnView:							xnview                                  Image Viewer
+48	Inkscape:						inkscape                                Vector Graphics Editor
+49	FastStone:						faststone                               FastStone Image Viewer
+50	Greenshot:						greenshot                               Screenshot Tool
+51	ShareX:							sharex                                  Screenshot Uploader
+
+UTILITIES:
+58	TeamViewer 14 (no support): 	teamviewer14                            Remote Access Tool V. 14
+    TeamViewer 15:                  teamviewer15                            Remote Access Tool V. 15
+59	ImgBurn:						imgburn                                 Disc Burner
+60	RealVNC:						realvnc                                 RealVNC Remote Access 
+61	TeraCopy:						teracopy                                Better File Copy 
+62	CDBurnerXP:						cdburnerxp                              Disc Burner (requires .NET)
+63	Revo:							revo                                    App Uninstaller/Reverse Ninite
+64	Launchy:						launchy                                 Hotkey Launcher
+65	WinDirStat:						windirstat                              Directory Statistics
+66	Glary:							glary                                   System Utilities
+67	InfraRecorder:				    infrarecorder                           Disc Burner
+68	Classic Start					classicstart                            Classic Shell Win8 Start Menu
+
+SECURITY:
+69	Essentials:						essentials                              Great Antivirus by Microsoft
+70	Malwarebytes:					malwarebytes                            Malware Remover
+71	Avast:							avast                                   Avast Free Antivirus
+72	AVG:							avg                                     AVG Free Antivirus
+73	Spybot 2:						spybot2                                 Spyware Remover
+74	Avira:							avira                                   Avira Free Antivirus
+75	SUPERAntiSpyware:				super                                   SUPERAntiSpyware Free
+
+
+DEVELOPER TOOLS
+    Phyton x64 3                    pythonx3                                Programming Language
+    Python 3                        python3                                 Programming Language
+76	Python:							python                                  Programming Language
+77	FileZilla:						filezilla                               FTP Client
+78	Notepad++:						notepadplusplus                         Programmer's Editor
+    JDK (AdoptOpenJDK) x64 8:	    adoptjdkx8                              64-bit Java Development Kit 8
+80	JDK (AdoptOpenJDK) 8:			adoptjdk8                               Java Development Kit 8
+    JDK (AdoptOpenJDK) x64 11       adoptjdkx11                             64-bit Java Development Kit 11
+    JDK (Amazon Corretto) x64 8:	correttojdkx8                           64-bit Java Development Kit 8
+79	JDK (Amazon Corretto) 8:		correttojdk8                            Java Development Kit 8
+    JDK (Amazon Corretto) x64 11    correttojdkx11                          64-bit Java Development Kit 11
+81	WinSCP:							winscp                                  SCP Client
+82	PuTTY:							putty                                   SSH client
+83	WinMerge:						winmerge                                Compare and Merge Files
+84	Eclipse:						eclipse                                 IDE for Java (requires Java)
+85	Visual Studio Code:				vscode                                  Programmer's Editor
+
+DOCUMENTS:
+52	Foxit Reader:					foxit                                   Alternative PDF Reader
+53	LibreOffice:					libreoffice                             Free Office Suite (JRE recommended)
+54	SumatraPDF:						sumatrapdf                              Lightweight PDF Reader
+55	CutePDF:						cutepdf                                 Print Documents as PDF Files
+56	PDFCreator (no support):		pdfcreator                              NO SUPPORT
+57	OpenOffice:						openoffice                              Free Office Suite (JRE recommended)
