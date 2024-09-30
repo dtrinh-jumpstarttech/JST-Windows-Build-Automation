@@ -60,19 +60,20 @@ $recoveryKeyProtector = $bitLockerVolume.KeyProtector | Where-Object { $_.KeyPro
 Show-CustomDialog -Title "BitLocker Key" -Dialog "Please copy the following BITLOCKER KEY into configurations." -TextToCopy "Recovery Key ID: $recoveryKeyID / Recovery Key PW: $recoveryKeyProtector" -CheckboxText "I have copied this into ConnectWise."
 
 
-# 6] Software Deployment for Chrome, 7Zip, Google Drive, and Zoom using Chocolatey
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+# 6] Software Deployment for Chrome, 7Zip, Google Drive, and Zoom using Chocolatey ✔
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 choco install googlechrome -y
 choco install zoom -y
 choco install adobereader -y
 choco install 7zip -y
 
-# 6] Jump Start Admin Account
+# 6] Jump Start Admin Account ✔
 net user jstadmin /add
 $password = (wget https://www.dinopass.com/password/strong).Content
 net user jstadmin $password
-
+net localgroup administrators jstadmin /add
 
 
 
