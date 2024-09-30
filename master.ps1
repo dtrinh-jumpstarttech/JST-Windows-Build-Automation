@@ -1,3 +1,5 @@
+$ROOT = "C:\Software\"
+
 # Run the following:
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
@@ -21,15 +23,28 @@ $computer_name = Get-UserInput -Prompt "Enter the desired computer name: " -Titl
 # Show the user what they entered
 Write-Host "You entered: $computer_name"
 
-mkdir C:\Software -ErrorAction SilentlyContinue
+mkdir $ROOT -ErrorAction SilentlyContinue
 
 # 2] Install Automate
-$automate_url = Get-ValidURL -Prompt "Enter the Automate URL: " -Title "Installing Automate"
-Install-FromURL -install_url $automate_url -destination_path "C:\Software\automate_installer.msi"
+$automate_install_location = $ROOT + "Automate\"
+mkdir $automate_install_location -ErrorAction SilentlyContinue
+
+$automate_url = Get-ValidURL -Prompt "Log into Automate on the Web and Copy the Automate Installer URL: " -Title "Installing Automate"
+
+$output = $automate_install_location + "automate-installer.zip"
+
+wget $automate_url -O $output
+Expand-Archive -Path $output -DestinationPath $automate_install_location
+cd $automate_install_location
+msiexec /quiet /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst" 
+
 
 # 3] Install Sophos
 $sophos_url = Get-ValidURL -Prompt "Enter Sophos URL: " -Title "Installing Sophos"
-Install-FromURL -install_url $sophos_url -destination_path "C:\Software\sophos_installer.msi"
+
+$output = $ROOT + "sophos_installer.msi"
+
+Install-FromURL -install_url $sophos_url -destination_path $output
 
 # 4] Enable BitLocker
 Enable-BitLockerTPM

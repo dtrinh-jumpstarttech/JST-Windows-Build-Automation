@@ -78,4 +78,4 @@ function Show-CustomDialog {
 }
 
 # Example usage of the function
-Show-CustomDialog -Title "BitLocker Key" -Dialog "Please copy your BitLocker Recovery Key below." -TextToCopy "XYZ12345-ABC67890-EXAMPLE" -CheckboxText "I have copied this key into ConnectWise Automate"
+# Show-CustomDialog -Title "BitLocker Key" -Dialog "Please copy your BitLocker Recovery Key below." -TextToCopy "XYZ12345-ABC67890-EXAMPLE" -CheckboxText "I have copied this key into ConnectWise Automate"
