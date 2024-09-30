@@ -36,15 +36,19 @@ $output = $automate_install_location + "automate-installer.zip"
 wget $automate_url -O $output
 Expand-Archive -Path $output -DestinationPath $automate_install_location
 cd $automate_install_location
-msiexec /quiet /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst" 
+Write-Output "Installing Automate..."
+msiexec /quiet /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst" -Wait
+Write-Output "Installing Automate... done."
 
 
 # 3] Install Sophos
 $sophos_url = Get-ValidURL -Prompt "Enter Sophos URL: " -Title "Installing Sophos"
 
-$output = $ROOT + "sophos_installer.msi"
+$output = $ROOT + "sophos_installer.exe"
 
-Install-FromURL -install_url $sophos_url -destination_path $output
+Write-Output "Installing Sophos..."
+wget $sophos_url -O $output
+Start-Process -FilePath $output
 
 # 4] Enable BitLocker
 Enable-BitLockerTPM

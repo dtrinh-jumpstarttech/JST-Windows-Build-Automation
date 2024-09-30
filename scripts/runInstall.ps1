@@ -20,12 +20,12 @@ function Install-FromURL {
 
                 # Download the file
                 Write-Host "Downloading the installer from $install_url..."
-                wget -O $destination_path $install_url
+                wget $install_url -O $destination_path
                 Write-Host "Download completed successfully." -ForegroundColor Green
 
                 # Install the downloaded package
                 Write-Host "Starting installation from $destination_path..."
-                Start-Process msiexec "/i $destination_path /qn" -Wait
+                Start-Process msiexec "/i $destination_path" -Wait
                 Write-Host "Installation completed successfully." -ForegroundColor Green
             }
             catch {
