@@ -13,7 +13,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 . scripts\showCustomDialog.ps1
 
 # Ask the user for the following.
-# 1] Rename the Computer
+# 1] Rename the Computer ✔
 # Load the necessary assembly for Windows Forms
 Add-Type -AssemblyName Microsoft.VisualBasic
 
@@ -25,7 +25,7 @@ Write-Host "You entered: $computer_name"
 
 mkdir $ROOT -ErrorAction SilentlyContinue
 
-# 2] Install Automate
+# 2] Install Automate ✔
 $automate_install_location = $ROOT + "Automate\"
 mkdir $automate_install_location -ErrorAction SilentlyContinue
 
@@ -41,7 +41,7 @@ msiexec /quiet /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst" -Wait
 Write-Output "Installing Automate... done."
 
 
-# 3] Install Sophos
+# 3] Install Sophos ✔
 $sophos_url = Get-ValidURL -Prompt "Enter Sophos URL: " -Title "Installing Sophos"
 
 $output = $ROOT + "sophos_installer.exe"
@@ -50,10 +50,10 @@ Write-Output "Installing Sophos..."
 wget $sophos_url -O $output
 Start-Process -FilePath $output
 
-# 4] Enable BitLocker
+# 4] Enable BitLocker ✔
 Enable-BitLockerTPM
 
-# 5] Show BitLocker Key for user to copy
+# 5] Show BitLocker Key for user to copy ✔
 $bitLockerVolume = Get-BitLockerVolume -MountPoint C
 $recoveryKeyID = $bitLockerVolume.KeyProtector.KeyProtectorId[0]
 $recoveryKeyProtector = $bitLockerVolume.KeyProtector | Where-Object { $_.KeyProtectorType -eq 'RecoveryPassword' } | Select-Object -ExpandProperty RecoveryPassword
@@ -83,3 +83,13 @@ Show-CustomDialog -Title "JSTAdmin PW" -Dialog "Please copy the following passwo
 
 # 9] Reboot Machine
 shutdown.exe /r /t 120 /c "The system will restart in 2 minutes. Please save your work." /f
+
+'''
+BOILERPLATE:
+
+Computer renamed
+Automate MDM installed
+Sophos AV installed
+BitLocker Enabled
+BitLocker copied into JST database
+'''
