@@ -35,9 +35,9 @@ $output = $automate_install_location + "automate-installer.zip"
 
 wget $automate_url -O $output
 Expand-Archive -Path $output -DestinationPath $automate_install_location
-Set-Location $automate_install_location
+cd $automate_install_location
 Write-Output "Installing Automate..."
-msiexec /quiet /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst" -Wait
+msiexec /qn /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst" -Wait
 Write-Output "Installing Automate... done."
 
 
