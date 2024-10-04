@@ -35,7 +35,7 @@ $output = $automate_install_location + "automate-installer.zip"
 
 wget $automate_url -O $output
 Expand-Archive -Path $output -DestinationPath $automate_install_location
-cd $automate_install_location
+Set-Location $automate_install_location
 Write-Output "Installing Automate..."
 msiexec /quiet /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst" -Wait
 Write-Output "Installing Automate... done."
@@ -83,7 +83,7 @@ Show-CustomDialog -Title "JSTAdmin PW" -Dialog "Please copy the following passwo
 .\scripts\TriggerWindowsUpdate.ps1
 
 # 9] Reboot Machine
-shutdown.exe /r /t 120 /c "The system will restart in 2 minutes. Please save your work." /f
+shutdown.exe /r /t 1500 /c "The system has begun installing Windows updates and will restart in 15 minutes." /f
 
 '''
 BOILERPLATE:
