@@ -43,6 +43,15 @@ function Get-ValidURL {
     $form.AcceptButton = $okButton
     $form.CancelButton = $skipButton
 
+    # Event to handle the TextChanged event of the textbox
+    $textbox.Add_TextChanged({
+        if ($textbox.Text.Length -ge 5) {
+            $okButton.Enabled = $true
+        } else {
+            $okButton.Enabled = $false
+        }
+    })
+
     # Show the form and collect the result
     $dialogResult = $form.ShowDialog()
 
