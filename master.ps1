@@ -3,6 +3,8 @@ $ROOT = "C:\Software\"
 # Run the following:
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
+$script_folder = (pwd).Path
+
 # Import Dependencies
 # Dot Sourcing: Imports contents of a script into the current script to bring functions in.
 . scripts\getUserInput.ps1
@@ -19,6 +21,8 @@ Add-Type -AssemblyName Microsoft.VisualBasic
 
 # Initialize the value as an empty string
 $computer_name = Get-UserInput -Prompt "Enter the desired computer name: " -Title "Renaming Computer"
+Rename-Computer -NewName $computer_name -Force
+
 
 # Show the user what they entered
 Write-Host "You entered: $computer_name"
@@ -37,7 +41,7 @@ wget $automate_url -O $output
 Expand-Archive -Path $output -DestinationPath $automate_install_location
 cd $automate_install_location
 Write-Output "Installing Automate..."
-msiexec /qn /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst" -Wait
+msiexec /qn /i "Agent_Install.msi" TRANSFORMS="Agent_Install.mst"
 Write-Output "Installing Automate... done."
 
 
@@ -80,10 +84,11 @@ net localgroup administrators jstadmin /add
 Show-CustomDialog -Title "JSTAdmin PW" -Dialog "Please copy the following password into configurations." -TextToCopy "JSTAdmin PW: $password" -CheckboxText "I have copied this into ConnectWise."
 
 # 8] Runs Windows Updates and Driver Updates
+cd $script_folder
 .\scripts\TriggerWindowsUpdate.ps1
 
 # 9] Reboot Machine
-shutdown.exe /r /t 1500 /c "The system has begun installing Windows updates and will restart in 15 minutes." /f
+shutdown.exe /r /t 120 /c "The system has finished installing Windows updates and will restart in 2 minutes." /f
 
 '''
 BOILERPLATE:
