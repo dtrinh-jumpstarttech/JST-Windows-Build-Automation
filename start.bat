@@ -3,7 +3,7 @@
 net session >nul 2>&1
 if %errorlevel% neq 0 (
     echo Requesting administrator privileges...
-    powershell -Command "Start-Process cmd -ArgumentList '/c, %~dpnx0' -Verb runAs"
+    powershell -Command "Start-Process cmd -ArgumentList '/c, %~dpnx0' -WorkingDirectory '%~dp0' -Verb runAs"
     exit /b
 )
 
@@ -11,4 +11,4 @@ if %errorlevel% neq 0 (
 set scriptDir=%~dp0
 
 :: Run the PowerShell script with RemoteSigned execution policy
-powershell -ExecutionPolicy RemoteSigned -File "%scriptDir%master.ps1"
+powershell -NoExit -ExecutionPolicy Bypass -File "%scriptDir%master.ps1"
