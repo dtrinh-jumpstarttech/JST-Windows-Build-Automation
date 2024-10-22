@@ -4,7 +4,7 @@ function Enable-BitLockerTPM {
     $bitLockerStatus = Get-BitLockerVolume -MountPoint "C:"
 
     # Check if BitLocker is in "Waiting for Activation" state or not fully encrypted
-    if ($bitLockerStatus.ProtectionStatus -eq "Off" -and $bitLockerStatus.VolumeStatus -eq "FullyDecrypted" -and $bitLockerStatus.LockStatus -eq "Unlocked") {
+    if ($bitLockerStatus.ProtectionStatus -eq "Off" -and $bitLockerStatus.VolumeStatus -eq "FullyEncrypted" -and $bitLockerStatus.LockStatus -eq "Unlocked") {
         # This means BitLocker is waiting for activation (no key protector added yet)
         Write-Host "BitLocker is waiting for activation. Adding key protector and starting encryption."
 
