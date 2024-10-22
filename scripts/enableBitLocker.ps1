@@ -1,15 +1,26 @@
 function Enable-BitLockerTPM {
 
-
-    # Enable BitLocker
-    # Check if BitLocker is already enabled on the C: drive, encryption is in progress, or will be completed.
+    # Get BitLocker status on the C: drive
     $bitLockerStatus = Get-BitLockerVolume -MountPoint "C:"
-    if ($bitLockerStatus.VolumeStatus -ne "FullyEncrypted" -and $bitLockerStatus.VolumeStatus -ne "EncryptionInProgress" -and $bitLockerStatus.VolumeStatus -ne "PendingEncryption") {
-        # Your code here
-        # Enable BitLocker on C: Drive using TPM
+
+    # Check if BitLocker is in "Waiting for Activation" state or not fully encrypted
+    if ($bitLockerStatus.ProtectionStatus -eq "ProtectionOff" -and $bitLockerStatus.VolumeStatus -eq "FullyDecrypted" -and $bitLockerStatus.LockStatus -eq "Unlocked") {
+        # This means BitLocker is waiting for activation (no key protector added yet)
+        Write-Host "BitLocker is waiting for activation. Adding key protector and starting encryption."
+
+        # Add TPM Protector and Recovery Password Protector
+        Add-BitLockerKeyProtector -MountPoint "C:" -TpmProtector
+
+        # Start encryption
+        Enable-BitLocker -MountPoint "C:" -TpmProtector -SkipHardwareTest
+        Write-Host "BitLocker is being activated and encryption has started on the C: drive."
+    }
+    elseif ($bitLockerStatus.VolumeStatus -ne "FullyEncrypted" -and $bitLockerStatus.VolumeStatus -ne "EncryptionInProgress" -and $bitLockerStatus.VolumeStatus -ne "PendingEncryption") {
+        # If BitLocker is not enabled or in progress, enable it
+        Write-Host "BitLocker is not fully enabled. Enabling BitLocker on the C: drive."
+        
         Enable-BitLocker -MountPoint "C:" -TpmProtector -SkipHardwareTest
         Add-BitLockerKeyProtector -MountPoint "C:" -RecoveryPasswordProtector
-    
         Write-Host "BitLocker is being enabled on the C: drive with TPM unlock."
     }
     else {
