@@ -7,12 +7,12 @@ $script_folder = (pwd).Path
 
 # Import Dependencies
 # Dot Sourcing: Imports contents of a script into the current script to bring functions in.
-. scripts\getUserInput.ps1
-. scripts\getValidURL.ps1
-. scripts\runInstall.ps1
-. scripts\enableBitLocker.ps1
-. scripts\showBitLockerKey.ps1
-. scripts\showCustomDialog.ps1
+. .\scripts\getUserInput.ps1
+. .\scripts\getValidURL.ps1
+. .\scripts\runInstall.ps1
+. .\scripts\enableBitLocker.ps1
+. .\scripts\showBitLockerKey.ps1
+. .\scripts\showCustomDialog.ps1
 
 # Ask the user for the following.
 # 1] Rename the Computer ✔
