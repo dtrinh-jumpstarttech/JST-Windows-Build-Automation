@@ -7,12 +7,12 @@ $script_folder = (pwd).Path
 
 # Import Dependencies
 # Dot Sourcing: Imports contents of a script into the current script to bring functions in.
-. (Resolve-Path .\scripts\getUserInput.ps1)
-. (Resolve-Path .\scripts\getValidURL.ps1)
-. (Resolve-Path .\scripts\runInstall.ps1)
-. (Resolve-Path .\scripts\enableBitLocker.ps1)
-. (Resolve-Path .\scripts\showBitLockerKey.ps1)
-. (Resolve-Path .\scripts\showCustomDialog.ps1)
+. .\scripts\getUserInput.ps1
+. .\scripts\getValidURL.ps1
+. .\scripts\runInstall.ps1
+. .\scripts\enableBitLocker.ps1
+. .\scripts\showBitLockerKey.ps1
+. .\scripts\showCustomDialog.ps1
 
 Write-Host "All dependencies loaded."
 pause
@@ -55,7 +55,7 @@ $output = $ROOT + "sophos_installer.exe"
 
 Write-Output "Installing Sophos..."
 wget $sophos_url -O $output
-Start-Process -FilePath $output
+Start-Process -FilePath $output -ArgumentList "--quiet"
 
 # 4] Enable BitLocker ✔
 Enable-BitLockerTPM
