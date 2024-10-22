@@ -1,4 +1,7 @@
 @echo off
+:: Get the directory of the current .bat file
+cd /d %~dp0
+
 :: Check if running as admin
 net session >nul 2>&1
 if %errorlevel% neq 0 (

@@ -14,6 +14,7 @@ $script_folder = (pwd).Path
 . (Resolve-Path .\scripts\showBitLockerKey.ps1)
 . (Resolve-Path .\scripts\showCustomDialog.ps1)
 
+Write-Host "All dependencies loaded."
 pause
 
 # Ask the user for the following.
