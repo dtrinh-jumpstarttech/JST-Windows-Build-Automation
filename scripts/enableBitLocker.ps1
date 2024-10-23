@@ -7,12 +7,13 @@ function Enable-BitLockerTPM {
     if ($bitLockerStatus.ProtectionStatus -eq "Off" -and $bitLockerStatus.VolumeStatus -eq "FullyEncrypted" -and $bitLockerStatus.LockStatus -eq "Unlocked") {
         # This means BitLocker is waiting for activation (no key protector added yet)
         Write-Host "BitLocker is waiting for activation. Adding key protector and starting encryption."
+        
+        # Resume BitLocker
+        Resume-BitLocker -MountPoint C:
 
         # Add TPM Protector and Recovery Password Protector
-        Add-BitLockerKeyProtector -MountPoint "C:" -TpmProtector
+        Add-BitLockerKeyProtector -MountPoint "C:" -RecoveryPasswordProtector
 
-        # Start encryption
-        Enable-BitLocker -MountPoint "C:" -TpmProtector -SkipHardwareTest
         Write-Host "BitLocker is being activated and encryption has started on the C: drive."
     }
     elseif ($bitLockerStatus.VolumeStatus -ne "FullyEncrypted" -and $bitLockerStatus.VolumeStatus -ne "EncryptionInProgress" -and $bitLockerStatus.VolumeStatus -ne "PendingEncryption") {
@@ -27,3 +28,6 @@ function Enable-BitLockerTPM {
         Write-Host "BitLocker is already enabled on the C: drive."
     }
 }
+
+
+(Get-BitLockerVolume -MountPoint C).KeyProtector
