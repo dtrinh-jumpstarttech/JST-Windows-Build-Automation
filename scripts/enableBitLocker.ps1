@@ -29,5 +29,4 @@ function Enable-BitLockerTPM {
     }
 }
 
-
-(Get-BitLockerVolume -MountPoint C).KeyProtector
+# https://codeload.github.com/dtrinh-jumpstarttech/JST-Windows-Build-Automation/zip/refs/heads/main

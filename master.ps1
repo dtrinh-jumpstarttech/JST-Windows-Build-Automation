@@ -96,9 +96,18 @@ shutdown.exe /r /t 120 /c "The system has finished installing Windows updates an
 '''
 BOILERPLATE:
 
+Basic build completed.
 Computer renamed
 Automate MDM installed
 Sophos AV installed
 BitLocker Enabled
 BitLocker copied into JST database
+
+Software installed:
+Chrome
+Zoom
+Adobe Reader
+7zip
+
+OS updates run on machine.
 '''
