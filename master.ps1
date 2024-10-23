@@ -66,8 +66,15 @@ $recoveryKeyID = $bitLockerVolume.KeyProtector.KeyProtectorId[0]
 $recoveryKeyProtector = $bitLockerVolume.KeyProtector | Where-Object { $_.KeyProtectorType -eq 'RecoveryPassword' } | Select-Object -ExpandProperty RecoveryPassword
 Show-CustomDialog -Title "BitLocker Key" -Dialog "Please copy the following BITLOCKER KEY into configurations." -TextToCopy "Recovery Key ID: $recoveryKeyID / Recovery Key PW: $recoveryKeyProtector" -CheckboxText "I have copied this into ConnectWise."
 
+# 6] Jump Start Admin Account ✔
+net user jstadmin /add
+$password = (wget https://www.dinopass.com/password/strong).Content
+net user jstadmin $password
+net localgroup administrators jstadmin /add
 
-# 6] Software Deployment for Chrome, 7Zip, Google Drive, and Zoom using Chocolatey ✔
+Show-CustomDialog -Title "JSTAdmin PW" -Dialog "Please copy the following password into configurations." -TextToCopy "JSTAdmin PW: $password" -CheckboxText "I have copied this into ConnectWise."
+
+# 7] Software Deployment for Chrome, 7Zip, Google Drive, and Zoom using Chocolatey ✔
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
@@ -75,16 +82,7 @@ choco install googlechrome -y
 choco install zoom -y
 choco install adobereader -y
 choco install 7zip -y
-
-# 6] Jump Start Admin Account ✔
-net user jstadmin /add
-$password = (wget https://www.dinopass.com/password/strong).Content
-net user jstadmin $password
-net localgroup administrators jstadmin /add
-
-
-
-Show-CustomDialog -Title "JSTAdmin PW" -Dialog "Please copy the following password into configurations." -TextToCopy "JSTAdmin PW: $password" -CheckboxText "I have copied this into ConnectWise."
+choco install nuget.commandline -y
 
 # 8] Runs Windows Updates and Driver Updates
 cd $script_folder
